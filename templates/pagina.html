@@ -1,0 +1,200 @@
+{% load staticfiles %}
+
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>A2E</title>
+	<link rel="stylesheet" href="{% static "admin/css/bootstrap.css" %}">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="{% static "admin/css/header.css" %}">
+</head>	
+	<body>
+		<div class="container">
+
+			<div class="row">	
+				<div class="col-xs-12" >
+					
+					<div class="login">
+
+						<a href="#" class="button">Ingresar</a>
+
+					</div>
+					<h1>Ambiente de Autoevaluacion</h1>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-4"> 
+					<div class="caja-nombre">
+						<p>Nombre</p> <p>Foto</p>
+
+					</div>
+					
+				    <div id="accordion" class="panel-group">
+
+				        <div class="panel panel-default">
+
+				            <div class="panel-heading">
+
+				                <h4 class="panel-title">
+
+				                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Opcion 1</a>
+
+				                </h4>
+
+				            </div>
+
+				            <div id="collapseOne" class="panel-collapse collapse in">
+
+				                <div class="panel-body">
+
+				                    <p>Opcion 1 bla bla bla</p>
+
+				                </div>
+
+				            </div>
+
+				        </div>
+
+				        <div class="panel panel-default">
+
+				            <div class="panel-heading">
+
+				                <h4 class="panel-title">
+
+				                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Opcion 2</a>
+
+				                </h4>
+
+				            </div>
+
+				            <div id="collapseTwo" class="panel-collapse collapse">
+
+				                <div class="panel-body">
+
+				                    <p>Opcion 2 bla bla bla</p>
+
+				                </div>
+
+				            </div>
+
+				        </div>
+
+				        <div class="panel panel-default">
+
+				            <div class="panel-heading">
+
+				                <h4 class="panel-title">
+
+				                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"> Opcion 3</a>
+
+				                </h4>
+
+				            </div>
+
+				            <div id="collapseThree" class="panel-collapse collapse">
+
+				                <div class="panel-body">
+
+				                    <p>Opcion 3 bla bla bla Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur accusamus iste magnam consectetur esse, quia suscipit veniam enim minima labore, quis minus facilis numquam incidunt voluptas illo facere earum temporibus?</a></p>
+
+				                </div>
+
+				            </div>
+
+				        </div>
+
+				    </div>
+
+				</div>
+				<div class="col-xs-8">
+					<div class="panel panel-primary">
+						    <div class="panel-heading">
+						        <h3 class="panel-title">Crear Examen</h3>
+						    </div>
+					  	<div class="panel-body ">
+					  		
+					  		<form role="form">
+  								<div class="form-group">
+    								<label for="inputdefault">Titulo</label>
+    								<input class="form-control" id="inputTitulo" type="text">
+  								</div>
+					    	
+					  	</div>
+					  	<button>Nuevo proyecto</button>  <!-- Aca va el <a href=""></a>  -->
+						
+					</div>	
+
+					<div class="panel-body fixed-panel">	
+						<div class="panel panel-info">
+						  	
+						  		<header class="panel-heading">
+									<h3 class="panel-title"> Tipo de Pregunta </h3>
+								</header>
+						    	<div class="radio">
+								  <label>
+								    <input type="radio" name="opciones" id="opciones_1" value="opcion_1" >
+								    tipo 1
+								  </label>
+								</div>
+								<div class="radio">
+								  <label>
+								    <input type="radio" name="opciones" id="opciones_2" value="opcion_2">
+								    tipo 2
+								  </label>
+								</div>
+								<div class="radio">
+								  <label>
+								    <input type="radio" name="opciones" id="opciones_3" value="opcion_3" checked>
+								    tipo 3
+								  </label>
+								</div>
+								<button>Nuevo choice</button>
+						  	
+							
+						</div>
+						<div class="panel panel-info">
+						    <div class="panel-heading">
+						        <h3 class="panel-title">Cargar Pregunta</h3>
+						    </div>
+						  	<div class="panel-body ">
+						  		
+						  		<form role="form">
+	  								<div class="form-group">
+	    								<label for="inputdefault">Pregunta</label>
+	    								<input class="form-control" id="inputPregunta" type="text">
+	    								<label for="inputdefault">Cantidad de Respuestas</label>
+	    								<input class="form-control" id="inputCantResp" type="text">
+	  								</div>
+						    	
+						  	</div>
+						
+						</div>
+						<div class="panel panel-info">
+						    <div class="panel-heading">
+						        <h3 class="panel-title">Cargar Respuesta</h3>
+						    </div>
+						  	<div class="panel-body ">
+						  		
+						  		<form role="form">
+	  								<div class="form-group">
+	    								<label for="inputdefault">Respuesta</label>
+	    								<input class="form-control" id="inputRespuesta" type="text">
+	  								</div>
+						    	
+						  	</div>
+						
+						</div>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt provident distinctio non sit tempore obcaecati eveniet quae fugiat earum recusandae, ratione doloribus assumenda! Modi veniam, enim. Velit minus fugit expedita!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi praesentium eius neque, aliquid, veniam quam impedit quae ullam obcaecati omnis excepturi, expedita laborum mollitia tempora architecto animi. Molestias fugiat, iste?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas obcaecati est sequi tempora accusamus, a magnam. Laborum nemo aspernatur iste, repellendus accusamus totam molestiae rerum optio, at! Alias aliquid, sequi.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas quasi rerum molestias ab, recusandae. Tempora blanditiis, a sequi quo est ad. Culpa delectus in quo qui optio, error, adipisci fugiat.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis similique, eaque accusantium incidunt. Nulla natus laudantium qui, aspernatur unde. Tempora, harum deserunt. Pariatur ullam similique fugit illum, totam cum aliquam?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente quas soluta numquam aut ex, voluptatum non, ipsum ipsam ab perspiciatis at quaerat repellendus necessitatibus optio. Adipisci sapiente minima, pariatur in.</p>
+					</div>
+				</div>
+
+
+				
+
+
+			</div>
+		</div>
+	</body>				
+</html>

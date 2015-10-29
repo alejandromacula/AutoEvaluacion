@@ -1,0 +1,72 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+
+    <title>AMBIENTE DE AUTOEVALUACION - Universidad nacional de Lanús</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static "admin/css/bootstrap.css" %}">
+    <!--external css-->
+    <link href="{% static "admin/css/font-awesome.css" %}" rel="stylesheet" />
+        
+    <!-- Custom styles for this template -->
+    <link href="{% static "admin/css/style.css" %}" rel="stylesheet">
+    <link href="{% static "admin/css/style-responsive.css" %}" rel="stylesheet">
+    
+  </head>
+
+  <body>
+
+	  <div id="login-page">
+	  	<div class="container">
+	  	
+		      <form class="form-login" action="{% url 'home' %}">
+		        <h2 class="form-login-heading">ingresar</h2>
+		        <div class="login-wrap">
+		            <input type="text" class="form-control" placeholder="Usuario" autofocus>
+		            <br>
+		            <input type="password" class="form-control" placeholder="Contraseña">
+		            <label class="checkbox">
+		                <span class="pull-right">
+		                    <a data-toggle="modal" href="#"> Olvide mi contraseña</a>
+		
+		                </span>
+		            </label>
+		            <button class="btn btn-theme btn-block" href="{% url 'home' %}" type="submit"><i class="fa fa-lock"></i> INGRESAR</button>
+		            <hr>
+		            
+		            
+		            <div class="registration">
+		                No tienes una cuenta?<br/>
+		                <a class="" href="#">
+		                    Crear una cuenta
+		                </a>
+		            </div>
+		
+		        </div>
+		
+		      </form>	  	
+	  	
+	  	</div>
+	  </div>
+
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="{% static "admin/js/jquery.js" %}"></script>
+    <script src="{% static "admin/js/bootstrap.min.js" %}"></script>
+
+    <!--BACKSTRETCH-->
+    <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
+    <script type="text/javascript" src="{% static "admin/js/jquery.backstretch.min.js"%}"></script>
+    <script>
+        $.backstretch("{% static "admin/img/fondo-unla.jpg"%}", {speed: 1500});
+    </script>
+
+
+  </body>
+</html>
