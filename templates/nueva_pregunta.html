@@ -1,255 +1,124 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="Dashboard">
-    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-
-    <title>AMBIENTE DE AUTOEVALUACION - Universidad nacional de Lanús</title>
-
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="{% static "admin/css/bootstrap.css" %}">
-    <!--external css-->
-    <link href="{% static "admin/css/font-awesome.css" %}" rel="stylesheet" />
-        
-    <!-- Custom styles for this template -->
-    <link href="{% static "admin/css/style.css" %}" rel="stylesheet">
-    <link href="{% static "admin/css/style-responsive.css" %}" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-
-  <body>
-
-  <section id="container" >
-      <!-- **********************************************************************************************************************************************************
-      TOP BAR CONTENT & NOTIFICATIONS
-      *********************************************************************************************************************************************************** -->
-      <!--header start-->
-      <header class="header black-bg">
-              <div class="sidebar-toggle-box">
-                  <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
-              </div>
-            <!--logo start-->
-            <a href="{% url 'home' %}" class="logo"><b>AMBIENTE DE AUTOEVALUACION</b></a>
-            <!--logo end-->
-            
-            <div class="top-menu">
-            	<ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="{% url 'login' %}">Logout</a></li>
-            	</ul>
-            </div>
-        </header>
-      <!--header end-->
-      
-      <!-- **********************************************************************************************************************************************************
-      MAIN SIDEBAR MENU
-      *********************************************************************************************************************************************************** -->
-      <!--sidebar start-->
-      <aside>
-          <div id="sidebar"  class="nav-collapse ">
-              <!-- sidebar menu start-->
-              <ul class="sidebar-menu" id="nav-accordion">
-              
-              	  <p class="centered"><a href="#"><img src="{% static "admin/img/logo-unla.jpg" %}" class="img-circle" width="60"></a></p>
-              	  <h5 class="centered">Alejandro Macula</h5>
-              	  	
-                  <li class="mt">
-                      <a href="{% url 'home' %}">
-                          <i class="fa fa-dashboard"></i>
-                          <span>Inicio</span>
-                      </a>
-                  </li>
-
-                  <li class="sub-menu">
-                      <a href="javascript:;" >
-                           <i class="fa fa-tasks"></i>
-                          <span>Preguntas</span>
-                      </a>
-                      <ul class="sub">
-                          <li><a  href="{% url 'nueva_pregunta' %}">Nueva</a></li>
-                          <li><a  href="#">Modificar</a></li>
-                          <li><a  href="#">Eliminar</a></li>
-                      </ul>
-                  </li>
-
-                  <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="fa fa-file-text "></i>
-                          <span>Examenes</span>
-                      </a>
-                      <ul class="sub">
-                          <li><a  href="#">Nuevo</a></li>
-                          <li><a  href="#">Modificar</a></li>
-                          <li><a  href="#">Eliminar</a></li>
-                      </ul>
-                  </li>
-              </ul>
-              <!-- sidebar menu end-->
-          </div>
-      </aside>
-      <!--sidebar end-->
-      
-      <!-- **********************************************************************************************************************************************************
-      MAIN CONTENT
-      *********************************************************************************************************************************************************** -->
-      <!--main content start-->
-      <section id="main-content">
-          <section class="wrapper site-min-height" style="width: 99%; overflow-x: hidden;">
-          	<h3><i class="fa fa-angle-right"></i> Crear Examen</h3>
-          	<div class="row mt"> 
+{% extends 'blank.html' %} 
+{% block 'body' %}
+  
+  <h3><i class="fa fa-angle-right"></i> Nueva Pregunta</h3>
+          <div class="row mt"> 
 
               <!-- INPUT MESSAGES -->
             <div class="row mt">
               <div class="col-lg-12">
                 <div class="form-panel">
                       <h4 class="mb"><i class="fa fa-angle-right"></i> Tipo de pregunta</h4>           
-            <div class="radio">
-              <label>
-                <input type="radio" name="optionsRadios" id="multipleChoiseRadio" value="choice">
-                  Multiple choise
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="optionsRadios" id="verdaderoOfalsoRadio" value="vof">
-                  Verdadero o Falso
-              </label>
-            </div>
-            <br>  
-            <div id="vof_form" style="display: none;"> 
-               <form class="form-horizontal style-form" method="get">
-                <div>
-                  <div class="form-group">
-                    <label class="col-sm-2 col-sm-2 control-label">Afirmación</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control">
-                    </div>
-                  
-                  <div class="col-sm-2 text-center">
-                    <div class="switch switch-square"
-                         data-on-label="<i class=' fa fa-check'></i>"
-                         data-off-label="<i class='fa fa-times'></i>">
-                        <input type="checkbox" checked="" />
-                    </div>
-                  </div>
-                </div>
-                </div>
-                 <button type="button" style="background-color: #6E0404;border: 1px solid #A50505;float:right;" class="btn btn-success">Guardar</button>
-                <br><br>
-                </form>
-            </div>      
-            <div id="choice_form" style="display: none;" >
-              <form class="form-horizontal style-form" method="get">
-                <div class="respuestas" >
-                  <div class="form-group">
-                    <label class="col-sm-2 col-sm-2 control-label">Titulo</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control">
-                    </div>
-                    <br>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-sm-2 col-sm-2 control-label">Respuesta Correcta</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-sm-2 col-sm-2 control-label">Respuesta Incorrecta</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control">
-                    </div>
-                  </div>
-                </div>
-                <button class="btn btn-round btn-default add_field_button">Agregar opción</button>
-                <br>
-                <br>
-                <button type="button" style="background-color: #6E0404;border: 1px solid #A50505;float:right;" class="btn btn-success">Guardar</button>
-                <br><br>
-              </form>
-            </div>
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="optionsRadios" id="multipleChoiseRadio" value="choice">
+                            Multiple choise
+                        </label>
+                      </div>
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="optionsRadios" id="verdaderoOfalsoRadio" value="vof">
+                            Verdadero o Falso
+                        </label>
+                      </div>
+                      <br>  
+                      <div id="vof_form" style="display: none;"> 
+                         <form class="form-horizontal style-form" method="get">
+                          <div>
+                            <div class="form-group">
+                              <label class="col-sm-2 col-sm-2 control-label">Afirmación</label>
+                              <div class="col-sm-6">
+                                  <input type="text" class="form-control">
+                              </div>
+                            
+                            <div class="col-sm-2 text-center">
+                              <div class="switch switch-square"
+                                   data-on-label="<i class=' fa fa-check'></i>"
+                                   data-off-label="<i class='fa fa-times'></i>">
+                                  <input type="checkbox" checked="" />
+                              </div>
+                            </div>
+                          </div>
+                          </div>
+                           <button type="button" style="background-color: #6E0404;border: 1px solid #A50505;float:right;" class="btn btn-success">Guardar</button>
+                          <br><br>
+                          </form>
+                      </div>      
+                      <div id="choice_form" style="display: none;" >
+                        <form class="form-horizontal style-form" method="get">
+                          <div class="respuestas" >
+                            <div class="form-group">
+                              <label class="col-sm-2 col-sm-2 control-label">Titulo</label>
+                              <div class="col-sm-8">
+                                  <input type="text" class="form-control">
+                              </div>
+                              <br>
+                            </div>
+                            <div class="form-group">
+                              <label class="col-sm-2 col-sm-2 control-label">Respuesta Correcta</label>
+                              <div class="col-sm-6">
+                                  <input type="text" class="form-control">
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label class="col-sm-2 col-sm-2 control-label">Respuesta Incorrecta</label>
+                              <div class="col-sm-6">
+                                  <input type="text" class="form-control">
+                              </div>
+                            </div>
+                          </div>
+                          <button class="btn btn-round btn-default add_field_button">Agregar opción</button>
+                          <br>
+                          <br>
+                          <button type="button" style="background-color: #6E0404;border: 1px solid #A50505;float:right;" class="btn btn-success">Guardar</button>
+                          <br><br>
+                        </form>
+                      </div>
     
 
                 </div><!-- /form-panel -->
               </div><!-- /col-lg-12 -->
             </div><!-- /row -->
-
-
-          	</div>
-			
-		</section><! --/wrapper -->
-      </section><!-- /MAIN CONTENT -->
-
-      <!--main content end-->
-      <!--footer start-->
-      <footer class="site-footer">
-          <div class="text-center">
-              2015 - Universidad Nacional De Lanus 
-              <a href="#" class="go-top">
-                  <i class="fa fa-angle-up"></i>
-              </a>
           </div>
-      </footer>
-      <!--footer end-->
-  </section>
 
-    <!-- js placed at the end of the document so the pages load faster -->
-    <script src="{% static "admin/js/jquery.js" %}"></script>
-    <script src="{% static "admin/js/bootstrap.min.js" %}"></script>
-    <script src="{% static "admin/js/query-ui-1.9.2.custom.min.js" %}"></script>
-    <script class="include" type="text/javascript" src="{% static "admin/js/jquery.dcjqaccordion.2.7.js" %}"></script>
+{% endblock %}
 
-    <script src="{% static "admin/js/bootstrap-switch.js" %}"></script>
-    <script src="{% static "admin/js/jquery.scrollTo.min.js" %}"></script>
-    <script src="{% static "admin/js/jquery.nicescroll.js" %}" type="text/javascript"></script>
+{% block 'external_scripts' %}
+{{ block.super }}
 
 
-    <!--common script for all pages-->
-    <script src="{% static "admin/js/common-scripts.js" %}"></script>
-
-    <!--script for this page-->
-    
-  <script>
+    <script>
 
       $(document).ready(function() {
-          var max_fields      = 10; //maximum input boxes allowed
-          var wrapper         = $(".respuestas"); //Fields wrapper
-          var add_button      = $(".add_field_button"); //Add button ID
-          
-          var x = 1; //initlal text box count
-          $(add_button).click(function(e){ //on add input button click
-              e.preventDefault();
-              if(x < max_fields){ //max input box allowed
-                  x++; //text box increment
-                  $(wrapper).append('<div class="form-group"><label class="col-sm-2 col-sm-2 control-label">Respuesta Incorrecta</label><div class="col-sm-6"><input type="text" class="form-control" name="mytext[]"/></div><a href="#" class="col-sm-2 remove_field" style="padding-top: 6px;">Eliminar</a></div>'); //add input box
+                var max_fields      = 10; //maximum input boxes allowed
+                var wrapper         = $(".respuestas"); //Fields wrapper
+                var add_button      = $(".add_field_button"); //Add button ID
+                
+                var x = 1; //initlal text box count
+                $(add_button).click(function(e){ //on add input button click
+                    e.preventDefault();
+                    if(x < max_fields){ //max input box allowed
+                        x++; //text box increment
+                        $(wrapper).append('<div class="form-group"><label class="col-sm-2 col-sm-2 control-label">Respuesta Incorrecta</label><div class="col-sm-6"><input type="text" class="form-control" name="mytext[]"/></div><a href="#" class="col-sm-2 remove_field" style="padding-top: 6px;">Eliminar</a></div>'); //add input box
+                    }
+                });
+                
+                $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+                    e.preventDefault(); $(this).parent('div').remove(); x--;
+                })
+            });
+
+            $('.radio').click(function(){
+              if($('#multipleChoiseRadio').is(":checked")){   
+              $("#choice_form").show();
+              $("#vof_form").hide();
+               }
+              else if($('#verdaderoOfalsoRadio').is(":checked")){
+              $("#choice_form").hide();
+              $("#vof_form").show();
               }
           });
-          
-          $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-              e.preventDefault(); $(this).parent('div').remove(); x--;
-          })
-      });
 
-      $('.radio').click(function(){
-        if($('#multipleChoiseRadio').is(":checked")){   
-        $("#choice_form").show();
-        $("#vof_form").hide();
-         }
-        else if($('#verdaderoOfalsoRadio').is(":checked")){
-        $("#choice_form").hide();
-        $("#vof_form").show();
-        }
-    });
+    </script>
 
-  </script>
-
-  </body>
-</html>
+  {% endblock %}

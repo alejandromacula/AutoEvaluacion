@@ -10,6 +10,8 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
 	url(r'^preguntas/nueva', 'autoEvaluacion.views.newPregunta', name='nueva_pregunta'),
+	url(r'^asignaturas/nueva', 'autoEvaluacion.views.newAsignatura', name='nueva_asignatura'),
+	url(r'^Examenes/nuevo', 'autoEvaluacion.views.newExamen', name='nuevo_examen'),
     url(r'^admin/', include(admin.site.urls)),
 
     url(r'^login/', 'autoEvaluacion.views.login', name='login'),

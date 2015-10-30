@@ -1,0 +1,79 @@
+{% extends 'blank.html' %} 
+{% block 'body' %}
+  
+  <h3><i class="fa fa-angle-right"></i> Crear Exámen</h3>
+            <div class="row mt"> 
+
+              <!-- INPUT MESSAGES -->
+            <div class="row mt">
+              <div class="col-lg-12">
+                <div class="form-panel">
+                    <h4 class="mb"><i class="fa fa-angle-right"></i>Configuración del exámen</h4>           
+                      <form class="form-horizontal style-form" method="get">
+                        <div>
+
+                          <div class="form-group">
+                            <label class="col-sm-2 col-sm-2 control-label">Asignatura</label>
+                            <div class="col-sm-6">
+                                <select class="form-control">
+                                  <option>Proyecto Software</option>
+                                  <option>Ingeniería de sofware I</option>
+                                  <option>Ingeniería de sofware II</option>
+                                  <option>Ingeniería de sofware III</option>
+                                </select>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-sm-2 col-sm-2 control-label">Sub asignatura</label>
+                            <div class="col-sm-6">
+                                <select class="form-control">
+                                  <option>Sin sub asignatura</option>
+                                  <option>Proyecto Software - Módulo 1</option>
+                                  <option>Proyecto Software - Módulo 2</option>
+                                  <option>Ingeniería de sofware I</option>
+                                  <option>Ingeniería de sofware II - Módulo 1</option>
+                                  <option>Ingeniería de sofware II - Módulo 2</option>
+                                  <option>Ingeniería de sofware III</option>
+                                </select>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-sm-2 col-sm-2 control-label">Título</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-sm-2 col-sm-2 control-label">Tipo de consignas</label>
+                            <div class="col-sm-6">
+                                <select class="form-control">
+                                  <option>Aleatorio</option>
+                                  <option>Multiple choice</option>
+                                  <option>Verdadero/Falso</option>
+                                </select>
+                            </div>
+                          </div>
+                          <div class="form-group">       
+                            <label class="col-sm-2 col-sm-2 control-label">Cantidad de Consignas</label>
+                            <div class="col-sm-1">
+                                <input type="number" step=2 min=1 max=11 class="form-control">
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class=" add-task-row">
+                        <br><br>
+                            <button type="button" style="background-color: #6E0404;border: 1px solid #A50505;float:right;" class="btn btn-success btn-sm pull-right">Exportar Scorm</button>
+                            <a class="btn btn-default btn-sm pull-left" href="#">Generar vista Previa</a>
+                        </div>
+
+                        <br><br>
+                      </form>   
+                </div><!-- /form-panel -->
+              </div><!-- /col-lg-12 -->
+            </div><!-- /row -->
+
+
+            </div>
+
+{% endblock %}
