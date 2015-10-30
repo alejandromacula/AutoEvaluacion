@@ -1,9 +1,15 @@
 {% extends 'blank.html' %} 
+
+
+{%block 'btn-ayuda'%}
+  <li><a class="logout" style="cursor:pointer; cursor: hand" onclick="tutorialNuevaAsignatura();"><i class="fa fa-question-circle"></i> Ayuda</a></li>
+{%endblock%}
+
+
 {% block 'body' %}
   
   <h3><i class="fa fa-angle-right"></i> Nueva Asignatura</h3>
             <div class="row mt"> 
-
               <!-- INPUT MESSAGES -->
             <div class="row mt">
               <div class="col-lg-12">
@@ -11,20 +17,20 @@
                       <form class="form-horizontal style-form" method="get">
                         <div>
                           <div class="form-group">
-                            <label class="col-sm-2 col-sm-2 control-label">Título</label>
-                            <div class="col-sm-6">
+                            <label class="col-sm-2 col-sm-2 control-label">Nombre</label>
+                            <div  id="nombre-asignatura" class="col-sm-6">
                                 <input type="text" class="form-control">
                             </div>
                           </div>
                           <div class="form-group">
                             <label class="col-sm-2 col-sm-2 control-label">Descripción</label>
-                            <div class="col-sm-6">
+                            <div id="descripcion-asignatura" class="col-sm-6">
                                 <input type="text" class="form-control">
                             </div>
                           </div>
                           <div class="form-group">
                             <label class="col-sm-2 col-sm-2 control-label">Asignatura padre</label>
-                            <div class="col-sm-6">
+                            <div id="asignatura-padre" class="col-sm-6">
                                 <select class="form-control">
                                   <option>Sin asignatura padre</option>
                                   <option>Proyecto Software</option>
@@ -35,7 +41,7 @@
                             </div>
                           </div>
                         </div>
-                         <button type="button" style="background-color: #6E0404;border: 1px solid #A50505;float:right;" class="btn btn-success">Guardar</button>
+                         <button id="guardar-categoria" type="button" style="background-color: #6E0404;border: 1px solid #A50505;float:right;" class="btn btn-success">Guardar</button>
                         <br><br>
                       </form>   
                 </div><!-- /form-panel -->
@@ -44,5 +50,54 @@
 
 
             </div>
+
+{% endblock %}
+{% block 'external_scripts' %}
+{{ block.super }}
+
+<script>
+       
+function tutorialNuevaAsignatura(){
+          //initialize instance
+          var enjoyhint_instance = new EnjoyHint({});
+
+          //simple config.
+          //Only one step - highlighting(with description) "New" button
+          //hide EnjoyHint after a click on the button.
+          var enjoyhint_script_steps = [
+              {
+                  "key #nombre-asignatura": "Colocaremos aquí el nombre de la asignatura, o de una subdivisión de la misma, como ser un modulo de una misma asignatura<br>Ingresa el nombre y presiona enter.<br><br>",
+                              "skipButton" : {className: "mySkip", text: "salir"},
+                  keyCode : 13
+              },
+              {
+                  "key #descripcion-asignatura": "Aquí cargaremos una descripción <text style='color: #00a6eb'>opcional</text> de la materia<br>Ingresa la descripcion y presiona enter.",
+                              "skipButton" : {className: "mySkip", text: "salir"},
+                  keyCode : 13
+              },
+              {
+                  "next #asignatura-padre" : "Aquí puedes indicar, si estamos<br>"+
+                  "creando una subcategoria, a que asignatura pertenece" +
+                      "<br>Haz click para aquí continuar",
+                              "nextButton" : {className: "myNext", text: "siguiente"},
+                              "skipButton" : {className: "mySkip", text: "salir"},
+              },
+              {
+                  "click #guardar-categoria" : "Presiona el boton guardar para finalizar",
+                              "skipButton" : {className: "mySkip", text: "salir"},
+              }
+
+          ];
+
+          //set script config
+          enjoyhint_instance.set(enjoyhint_script_steps);
+
+          //run Enjoyhint script
+          enjoyhint_instance.run();
+}
+
+</script>
+
+
 
 {% endblock %}
