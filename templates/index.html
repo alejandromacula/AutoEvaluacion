@@ -35,14 +35,26 @@ var enjoyhint_instance = new EnjoyHint({});
 //Only one step - highlighting(with description) "New" button
 //hide EnjoyHint after a click on the button.
 var enjoyhint_script_steps = [
-    {
-        "click #asignaturas": 'Comencemos creando una asignatura, en ella podrás <br> cargar consignas luego para generar examenes. <br>Haz click aquí...',
+  {
+        "next #inicio": 'Aquí podrás ver un resumen general de tus materias.',
                     "skipButton" : {className: "mySkip", text: "salir"},
     },
     {
-        "click #asignaturas-nueva": 'Crearemos una nueva asignatura. <br>Haz click aquí...',
+        "click #preguntas": 'Aquí podrás gestionar las preguntas o <br>items que podrás incluir en los examenes luego',
                     "skipButton" : {className: "mySkip", text: "salir"},
-    },    
+    },
+    {
+        "next #preguntas-nueva": 'De esta manera podrás navegar por las opciones.',
+                    "skipButton" : {className: "mySkip", text: "salir"},
+    },
+    {
+        "next #asignaturas": 'Aquí podras crear, modificar o eliminar una asignatura, en ella podrás <br> cargar consignas luego para generar examenes. <br>Haz click aquí para desplegar...',
+                    "skipButton" : {className: "mySkip", text: "salir"},
+    },
+    {
+        "next #examenes": 'Aquí podras crear, modificar o eliminar una los exámenes, a partir <br> de las asignaturas y preguntas creadas previamente',
+                    "skipButton" : {className: "mySkip", text: "salir"},
+    },     
 
 ];
 
