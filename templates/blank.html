@@ -48,7 +48,7 @@
             <div class="top-menu">
             	<ul class="nav pull-right top-menu">
                     {%block 'btn-ayuda'%}{%endblock%}
-                    <li><a class="logout" href="{% url 'login' %}">Logout</a></li>
+                    <li><a class="logout" href="{% url 'logout' %}">Logout</a></li>
             	</ul>
             </div>
         </header>
@@ -64,7 +64,7 @@
               <ul class="sidebar-menu" id="nav-accordion">
               
               	  <p class="centered"><a href="#"><img src="{% static "admin/img/logo-unla.jpg" %}" class="img-circle" width="60"></a></p>
-              	  <h5 class="centered">Alejandro Macula</h5>
+              	  <h5 class="centered">{{ username }}</h5>
               	  	
                   <li id="inicio" class="mt">
                       <a href="{% url 'home' %}">

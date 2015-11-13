@@ -32,12 +32,15 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = (
     'django.contrib.admin',
-    'django.contrib.auth',
+    'django.contrib.auth', # Include the 'auth' application the provides login and logout views and user authentication.
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'AutoEvaluacion',
+    'autoEvaluacion',
+    'login',
+    'widget_tweaks',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -59,10 +62,15 @@ WSGI_APPLICATION = 'AutoEvaluacion.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        #'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'mysql.connector.django',
+        'NAME': 'autoevaluacion',
+        'USER': 'root',
+        'PASSWORD': '   ',
+        'HOST': 'localhost',
     }
 }
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
@@ -88,3 +96,33 @@ TEMPLATE_DIRS = (
     os.path.join(SITE_ROOT, 'templates/'),
 )
 
+# Import the reverse_lazy method to get the URL of a URL pattern from its name
+from django.core.urlresolvers import reverse_lazy
+# LOGIN_REDIRECT_URL setting refers to the URL to which the user will be redirected
+# after a successful login.
+LOGIN_REDIRECT_URL = reverse_lazy('home')
+
+LOGIN_URL= '/login/'
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        }
+    },
+    'handlers': {
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler'
+        }
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+    }
+}
