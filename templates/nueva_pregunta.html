@@ -1,5 +1,11 @@
-{% extends 'blank.html' %} 
+{% extends 'blank.html' %}
+
+{%block 'btn-ayuda'%}
+  <li><a class="logout" style="cursor:pointer; cursor: hand" onclick="tutorialNuevaPregunta();"><i class="fa fa-question-circle"></i> Ayuda</a></li>
+{%endblock%}
+
 {% block 'body' %}
+
   
   <h3><i class="fa fa-angle-right"></i> Nueva Pregunta</h3>
           <div class="row mt"> 
@@ -11,13 +17,13 @@
                       <h4 class="mb"><i class="fa fa-angle-right"></i> Tipo de pregunta</h4>           
                       <div class="radio">
                         <label>
-                          <input type="radio" name="optionsRadios" id="multipleChoiseRadio" value="choice">
+                          <input type="radio" class="tipo_pregunta" name="optionsRadios" id="multipleChoiseRadio" value="choice">
                             Multiple choise
                         </label>
                       </div>
                       <div class="radio">
                         <label>
-                          <input type="radio" name="optionsRadios" id="verdaderoOfalsoRadio" value="vof">
+                          <input type="radio" class="tipo_pregunta" name="optionsRadios" id="verdaderoOfalsoRadio" value="vof">
                             Verdadero o Falso
                         </label>
                       </div>
@@ -27,7 +33,7 @@
                           <div>
                             <div class="form-group">
                             <label class="col-sm-2 col-sm-2 control-label">Asignatura</label>
-                            <div class="col-sm-6">
+                            <div id="materia1" class="col-sm-6">
                                 <select class="form-control">
                                   <option>Proyecto Software</option>
                                   <option>Ingeniería de sofware I</option>
@@ -39,11 +45,11 @@
                             <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label">Afirmación</label>
                               <div class="col-sm-6">
-                                  <input type="text" class="form-control">
+                                  <input id="afirmacion" type="text" class="form-control">
                               </div>
                             
                             <div class="col-sm-2 text-center">
-                              <div class="switch switch-square"
+                              <div  id="checkbox-vof" class="switch switch-square"
                                    data-on-label="<i class=' fa fa-check'></i>"
                                    data-off-label="<i class='fa fa-times'></i>">
                                   <input type="checkbox" checked="" />
@@ -51,7 +57,7 @@
                             </div>
                           </div>
                           </div>
-                           <button type="button" style="background-color: #6E0404;border: 1px solid #A50505;float:right;" class="btn btn-success">Guardar</button>
+                           <button id="guardar1" type="button" style="background-color: #6E0404;border: 1px solid #A50505;float:right;" class="btn btn-success">Guardar</button>
                           <br><br>
                           </form>
                       </div>      
@@ -61,13 +67,13 @@
                             <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label">Titulo</label>
                               <div class="col-sm-8">
-                                  <input type="text" class="form-control">
+                                  <input id="titulo-multipleChoice" type="text" class="form-control">
                               </div>
                               <br>
                             </div>
                             <div class="form-group">
                             <label class="col-sm-2 col-sm-2 control-label">Asignatura</label>
-                            <div class="col-sm-6">
+                            <div id="materia2"class="col-sm-6">
                                 <select class="form-control">
                                   <option>Proyecto Software</option>
                                   <option>Ingeniería de sofware I</option>
@@ -79,20 +85,20 @@
                             <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label">Respuesta Correcta</label>
                               <div class="col-sm-6">
-                                  <input type="text" class="form-control">
+                                  <input id="respuesta-correcta" type="text" class="form-control">
                               </div>
                             </div>
                             <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label">Respuesta Incorrecta</label>
                               <div class="col-sm-6">
-                                  <input type="text" class="form-control">
+                                  <input id="respuesta-incorrecta" type="text" class="form-control">
                               </div>
                             </div>
                           </div>
-                          <button class="btn btn-round btn-default add_field_button">Agregar opción</button>
+                          <a id="agregar-opcion" class="btn btn-round btn-default add_field_button">Agregar opción</a>
                           <br>
                           <br>
-                          <button type="button" style="background-color: #6E0404;border: 1px solid #A50505;float:right;" class="btn btn-success">Guardar</button>
+                          <button id="guardar2" type="button" style="background-color: #6E0404;border: 1px solid #A50505;float:right;" class="btn btn-success">Guardar</button>
                           <br><br>
                         </form>
                       </div>
@@ -141,6 +147,78 @@
               }
           });
 
-    </script>
+       
+      function tutorialNuevaPregunta(){
+          //initialize instance
+          var enjoyhint_instance = new EnjoyHint({});
 
-  {% endblock %}
+          //simple config.
+          //Only one step - highlighting(with description) "New" button
+          //hide EnjoyHint after a click on the button.
+          var enjoyhint_script_steps = [
+              
+              {
+                  "click #multipleChoiseRadio" : "Selecciona el siguiente tipo de pregunta que crearemos a continuacion",
+                              "skipButton" : {className: "mySkip", text: "salir"},
+                              "shape": 'circle',
+              },
+              {
+                  "key #titulo-multipleChoice": "Colocaremos aquí la afirmación que se mostrara en el examen.<br><br>",
+                              "skipButton" : {className: "mySkip", text: "salir"},
+                  keyCode : 13
+              },
+              {
+                  "next #materia2" : "Selecciona la materia a la que pertenece esta pregunta",
+                              "nextButton" : {className: "myNext", text: "siguiente"},
+                              "skipButton" : {className: "mySkip", text: "salir"},
+              },
+              {
+                  "key #respuesta-correcta": "Ingresa la afirmacion <br><text style='color: #00a6eb'>correcta</text>.",
+                              "skipButton" : {className: "mySkip", text: "salir"},
+                  keyCode : 13
+              },
+              {
+                  "key #respuesta-incorrecta": "Ingresa la afirmacion <br> <text style='color: #D90900'>incorrecta</text>.",
+                              "skipButton" : {className: "mySkip", text: "salir"},
+                  keyCode : 13
+              },
+              {
+                  "next #agregar-opcion": "Haciendo click podrás agregar una nueva opcion incorrecta al la pregunta.",
+                              "nextButton" : {className: "myNext", text: "siguiente"},
+                              "skipButton" : {className: "mySkip", text: "salir"},
+              },
+              {
+                  "click #verdaderoOfalsoRadio": "En caso de querer generar una consigna verdadero/falso haz click aqui.<br><br>",
+                              "nextButton" : {className: "myNext", text: "siguiente"},
+                              "skipButton" : {className: "mySkip", text: "salir"},
+                              "shape": 'circle',
+              },
+              {
+                  "next #materia1" : "Selecciona la materia a la que pertenece esta pregunta",
+                              "nextButton" : {className: "myNext", text: "siguiente"},
+                              "skipButton" : {className: "mySkip", text: "salir"},
+              },
+              {
+                  
+                  "next #afirmacion": "Ingresa la afirmacion",
+                              "nextButton" : {className: "myNext", text: "siguiente"},
+                              "skipButton" : {className: "mySkip", text: "salir"},
+              },
+              {
+                  "next #checkbox-vof" : "Aquí puedes indicarnos si la afimación anterior era correcta o incorrecta",
+                              "nextButton" : {className: "myNext", text: "siguiente"},
+                              "skipButton" : {className: "mySkip", text: "salir"},
+              },
+
+          ];
+
+          //set script config
+          enjoyhint_instance.set(enjoyhint_script_steps);
+
+          //run Enjoyhint script
+          enjoyhint_instance.run();
+}
+
+</script>
+
+{% endblock %}

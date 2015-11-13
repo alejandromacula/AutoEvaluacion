@@ -10,13 +10,14 @@ urlpatterns = patterns('',
 	url(r'^preguntas/nueva', 'autoEvaluacion.views.newPregunta', name='nueva_pregunta'),
 	url(r'^asignaturas/nueva', 'autoEvaluacion.views.newAsignatura', name='nueva_asignatura'),
 	url(r'^Examenes/nuevo', 'autoEvaluacion.views.newExamen', name='nuevo_examen'),
+	url(r'^administrador/$', 'autoEvaluacion.views.administrador', name='administrador'),
   	url(r'^admin/', include(admin.site.urls)),
 
 	
 	url(r'^$', 'login.views.index'),
       
 	# Map the 'app.hello.home' view to the URL /home/ and name the pattern as 'home'.
-	url(r'^home/$', 'login.views.home', name='home'),
+	url(r'^home/$', 'autoEvaluacion.views.home', name='home'),
 
 	# Map the 'django.contrib.auth.views.login' view to the /login/ URL.
 	# The additional parameters to the view are passed via the 3rd argument which is

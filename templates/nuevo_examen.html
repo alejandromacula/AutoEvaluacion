@@ -1,4 +1,9 @@
 {% extends 'blank.html' %} 
+
+{%block 'btn-ayuda'%}
+  <li><a class="logout" style="cursor:pointer; cursor: hand" onclick="tutorialNuevoExamen();"><i class="fa fa-question-circle"></i> Ayuda</a></li>
+{%endblock%}
+
 {% block 'body' %}
   
   <h3><i class="fa fa-angle-right"></i> Crear Exámen</h3>
@@ -14,7 +19,7 @@
 
                           <div class="form-group">
                             <label class="col-sm-2 col-sm-2 control-label">Asignatura</label>
-                            <div class="col-sm-6">
+                            <div id="asignatura" class="col-sm-6">
                                 <select class="form-control">
                                   <option>Proyecto Software</option>
                                   <option>Ingeniería de sofware I</option>
@@ -25,7 +30,7 @@
                           </div>
                           <div class="form-group">
                             <label class="col-sm-2 col-sm-2 control-label">Sub asignatura</label>
-                            <div class="col-sm-6">
+                            <div id="subasignatura" class="col-sm-6">
                                 <select class="form-control">
                                   <option>Sin sub asignatura</option>
                                   <option>Proyecto Software - Módulo 1</option>
@@ -40,12 +45,12 @@
                           <div class="form-group">
                             <label class="col-sm-2 col-sm-2 control-label">Título</label>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control">
+                                <input id="titulo" type="text" class="form-control">
                             </div>
                           </div>
                           <div class="form-group">
                             <label class="col-sm-2 col-sm-2 control-label">Tipo de consignas</label>
-                            <div class="col-sm-6">
+                            <div id="tipo.consigna" class="col-sm-6">
                                 <select class="form-control">
                                   <option>Aleatorio</option>
                                   <option>Multiple choice</option>
@@ -56,15 +61,15 @@
                           <div class="form-group">       
                             <label class="col-sm-2 col-sm-2 control-label">Cantidad de Consignas</label>
                             <div class="col-sm-1">
-                                <input type="number" step=2 min=1 max=11 class="form-control">
+                                <input id="cantidad-consignas" type="number" step=2 min=1 max=11 class="form-control">
                             </div>
                           </div>
                         </div>
 
                         <div class=" add-task-row">
                         <br><br>
-                            <button type="button" style="background-color: #6E0404;border: 1px solid #A50505;float:right;" class="btn btn-success btn-sm pull-right">Exportar Scorm</button>
-                            <a class="btn btn-default btn-sm pull-left" href="#">Generar vista Previa</a>
+                            <a type="button" id="exportar-scorm" style="background-color: #6E0404;border: 1px solid #A50505;float:right;" class="btn btn-success btn-sm pull-right">Exportar Scorm</a>
+                            <a id="vista-previa" class="btn btn-default btn-sm pull-left" href="#">Generar vista Previa</a>
                         </div>
 
                         <br><br>
@@ -77,3 +82,62 @@
             </div>
 
 {% endblock %}
+
+{% block 'external_scripts' %}
+{{ block.super }}
+
+
+    <script>
+       
+      function tutorialNuevoExamen(){
+          //initialize instance
+          var enjoyhint_instance = new EnjoyHint({});
+
+          //simple config.
+          //Only one step - highlighting(with description) "New" button
+          //hide EnjoyHint after a click on the button.
+          var enjoyhint_script_steps = [
+              
+              {
+                  "next #asignatura" : "Selecciona la asignatura a la que corresponde este examen",
+                              "nextButton" : {className: "myNext", text: "siguiente"},
+                              "skipButton" : {className: "mySkip", text: "salir"},
+              },
+              {
+                  "next #subasignatura" : "Selecciona aqui la sub asignatura, en caso de que el examen <br>corresponda a un módulo particular de una asignatura, <text style='color: #00a6eb'>este campo no es obligatorio</text><br><br>",
+                              "nextButton" : {className: "myNext", text: "siguiente"},
+                              "skipButton" : {className: "mySkip", text: "salir"},
+              },
+              {
+                  "key #titulo": "Colocaremos aquí <br>un título al examen.<br><br>",
+                              "skipButton" : {className: "mySkip", text: "salir"},
+                  keyCode : 13
+              },
+              {
+                  "next #cantidad-consignas" : "Aquí puedes indicar cuantas consignas <br>deseas que tenga el examen que se gererará",
+                              "nextButton" : {className: "myNext", text: "siguiente"},
+                              "skipButton" : {className: "mySkip", text: "salir"},
+              },
+              {
+                  "next #vista-previa" : "Aquí puedes tener una vista <br>previa del examen que se gererará",
+                              "nextButton" : {className: "myNext", text: "siguiente"},
+                              "skipButton" : {className: "mySkip", text: "salir"},
+              },
+              {
+                  "next #exportar-scorm" : "Aquí puedes exportar el <br>examen en formato SCORM",
+                              "nextButton" : {className: "myNext", text: "siguiente"},
+                              "skipButton" : {className: "mySkip", text: "salir"},
+              },
+
+          ];
+
+          //set script config
+          enjoyhint_instance.set(enjoyhint_script_steps);
+
+          //run Enjoyhint script
+          enjoyhint_instance.run();
+}
+
+</script>
+
+  {% endblock %}

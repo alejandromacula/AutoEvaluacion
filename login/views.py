@@ -34,6 +34,3 @@ def index(request):
 # login_required decorator, when applied to a view enforces the rule that
 # a user has to be logged in to the access the view. If he is not logged in,
 # he is redirected to the login page.
-@login_required
-def home(request):
-	return render_to_response('index.html', {'username':request.user.username})
